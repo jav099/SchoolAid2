@@ -12,14 +12,27 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBOutlet weak var scoreLbl: UILabel!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        scoreLbl.text = String(format: "%.2f", arguments: [correctPercentage])
+        
+        if (correctPercentage < 60) {
+            scoreLbl.textColor = UIColor.red
+        }
+        else if (correctPercentage < 80 && correctPercentage > 59)
+        {
+            scoreLbl.textColor = UIColor.orange
+        }
+        else if (correctPercentage > 79)
+        {
+            scoreLbl.textColor = UIColor.green
+        }
+    
     }
-
-
+    
 }
 
